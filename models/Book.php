@@ -147,6 +147,7 @@ class Book extends ActiveRecord
         $link = new BookCategory();
         $link->category_id = $categoryId;
         $link->book_id = $this->id;
+        $link->save(false);
       }
 
     }

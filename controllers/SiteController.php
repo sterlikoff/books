@@ -2,16 +2,17 @@
 
 namespace app\controllers;
 
+use app\models\Contact;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+
   /**
    * {@inheritdoc}
    */
@@ -99,8 +100,9 @@ class SiteController extends Controller
    * @return Response|string
    */
   public function actionContact() {
-    $model = new ContactForm();
-    if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+
+    $model = new Contact();
+    if ($model->load(Yii::$app->request->post()) && $model->save()) {
       Yii::$app->session->setFlash('contactFormSubmitted');
 
       return $this->refresh();

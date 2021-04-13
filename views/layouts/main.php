@@ -40,6 +40,8 @@ AppAsset::register($this);
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => [
       ['label' => 'Home', 'url' => ['/site/index']],
+      ['label' => 'Feedback', 'url' => ['/site/contact']],
+      ['label' => 'Contacts', 'url' => ['/contact/index'], "visible" => !Yii::$app->user->isGuest],
       ['label' => 'Categories', 'url' => ['/category/index'], "visible" => !Yii::$app->user->isGuest],
       ['label' => 'Books', 'url' => ['/book/index'], "visible" => !Yii::$app->user->isGuest],
       Yii::$app->user->isGuest ? (
